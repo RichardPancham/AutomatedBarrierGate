@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "AutomatedBarrierGate"
-include ':app'
+include ':AutoBarrierGate'
