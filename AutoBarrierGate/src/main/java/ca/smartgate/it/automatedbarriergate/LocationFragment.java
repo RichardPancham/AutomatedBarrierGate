@@ -1,3 +1,5 @@
+//Jaspreet Heer n01315290, Richard Pancham n01373454, Section 0NA
+
 package ca.smartgate.it.automatedbarriergate;
 
 import android.os.Bundle;
