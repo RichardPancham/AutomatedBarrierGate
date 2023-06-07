@@ -20,9 +20,13 @@ public class MainActivity extends AppCompatActivity {
     private Fragment homeFragment;
     private Fragment locationFragment;
 
+    private static final int SPLASH_DELAY = 2000; // Time in milliseconds
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_main);
 
         homeFragment = new HomeFragment();
