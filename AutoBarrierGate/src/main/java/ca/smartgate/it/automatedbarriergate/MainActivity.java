@@ -10,15 +10,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    private Fragment homeFragment;
+    private Fragment paymentFragment;
     private Fragment locationFragment;
+    private  Fragment barrierFragment;
 
     private static final int SPLASH_DELAY = 2000; // Time in milliseconds
 
@@ -29,19 +29,24 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        homeFragment = new HomeFragment();
+        paymentFragment = new PaymentFragment();
         locationFragment = new LocationFragment();
+        barrierFragment = new BarrierOpenAndClose();
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.home:
-                        switchFragment(homeFragment);
+                    case R.id.payment:
+                        switchFragment(paymentFragment);
                         return true;
                     case R.id.location:
                         switchFragment(locationFragment);
+                        return true;
+                    case R.id.open_barrier:
+                        switchFragment(barrierFragment);
                         return true;
                 }
                 return false;
@@ -49,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Set the initial fragment
-        switchFragment(homeFragment);
+        switchFragment(locationFragment);
     }
 
     private void switchFragment(Fragment fragment) {
