@@ -11,6 +11,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide(); // hide the title bar
         setContentView(R.layout.activity_splash);
 
         // Create a handler to delay the splash screen

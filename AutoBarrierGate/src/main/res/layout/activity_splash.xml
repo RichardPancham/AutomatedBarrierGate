@@ -8,7 +8,7 @@
     tools:context=".SplashActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView1"
         android:layout_width="261dp"
         android:layout_height="91dp"
         android:text="Splash Screen"
