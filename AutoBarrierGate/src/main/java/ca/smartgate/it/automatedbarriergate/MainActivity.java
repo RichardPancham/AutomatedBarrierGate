@@ -11,11 +11,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
     private Fragment paymentFragment;
     private Fragment locationFragment;
     private  Fragment barrierFragment;
@@ -55,6 +57,26 @@ public class MainActivity extends AppCompatActivity {
 
         // Set the initial fragment
         switchFragment(locationFragment);
+
+
+
+
+    }
+    // Inflate the menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle menu item clicks here
+        switch (item.getItemId()) {
+            // Handle your menu items here
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void switchFragment(Fragment fragment) {
