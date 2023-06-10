@@ -2,11 +2,27 @@ package ca.smartgate.it.automatedbarriergate;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,7 +30,7 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class BarrierOpenAndClose extends Fragment {
-
+    FirebaseFirestore firestore;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -54,11 +70,50 @@ public class BarrierOpenAndClose extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    private FirebaseFirestore db;
+    private TextView textView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_barrier_open_and_close, container, false);
+        View view = inflater.inflate(R.layout.fragment_barrier_open_and_close, container, false);
+
+        Button myButton = view.findViewById(R.id.button2);
+        db = FirebaseFirestore.getInstance();
+        textView = view.findViewById(R.id.textView3);
+
+        myButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                fetchDataFromFirestore();
+            }
+        });
+
+        return view;
     }
+
+
+
+    private void fetchDataFromFirestore() {
+        db.collection("BreakBeamEntry")
+                .document("XHSxFPz9fVCtEaxMl6v5")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            String data = documentSnapshot.getString("Status");
+                            textView.setText(data);
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Handle any errors that occurred during the fetching process
+                    }
+                });
+    }
+
 }
