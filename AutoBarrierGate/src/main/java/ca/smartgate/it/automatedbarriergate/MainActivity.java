@@ -12,7 +12,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,6 +29,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity{
     private Fragment paymentFragment;
     private Fragment locationFragment;
+
+    private  Fragment settingsFragment;
     private  Fragment barrierFragment;
 
     private static final int SPLASH_DELAY = 2000; // Time in milliseconds
@@ -57,6 +61,9 @@ public class MainActivity extends AppCompatActivity{
         paymentFragment = new PaymentFragment();
         locationFragment = new LocationFragment();
         barrierFragment = new BarrierOpenAndClose();
+        settingsFragment = new SettingsFragment();
+
+
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -64,6 +71,7 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
+
                     case R.id.payment:
                         switchFragment(paymentFragment);
                         return true;
@@ -78,6 +86,9 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
+
+
+
         // Set the initial fragment
         switchFragment(locationFragment);
 
@@ -85,6 +96,7 @@ public class MainActivity extends AppCompatActivity{
 
 
     }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
@@ -118,10 +130,35 @@ public class MainActivity extends AppCompatActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle menu item clicks here
         switch (item.getItemId()) {
+
+
+
+                    case R.id.settings:
+                        switchFragment(settingsFragment);
+                        return true;
+                    case R.id.web:
+                        // Handle menu item 2 click
+                        return true;
+                    case R.id.dialer:
+                        // Handle menu item 3 click
+                        Intent intent = new Intent(Intent.ACTION_DIAL);
+                        String phoneNumber = "1234567890"; // Replace with the desired phone number
+                        Uri phoneUri = Uri.parse("tel:" + phoneNumber);
+                        intent.setData(phoneUri);
+                        if (intent.resolveActivity(getPackageManager()) != null) {
+                            startActivity(intent);
+                        }
+                        return true;
+                    case R.id.about:
+                        return true;
+                    default:
+                        return super.onOptionsItemSelected(item);
+
+
             // Handle your menu items here
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
+
+    } }
 
     private void switchFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -158,4 +195,6 @@ public class MainActivity extends AppCompatActivity{
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+
+
 }
