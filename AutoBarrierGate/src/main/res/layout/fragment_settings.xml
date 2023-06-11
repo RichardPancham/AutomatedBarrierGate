@@ -11,7 +11,7 @@
 
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/signout"
         android:layout_width="129dp"
         android:layout_height="81dp"
         android:layout_marginStart="140dp"
