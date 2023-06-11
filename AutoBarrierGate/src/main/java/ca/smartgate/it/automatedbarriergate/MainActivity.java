@@ -145,9 +145,9 @@ public class MainActivity extends AppCompatActivity{
                         String phoneNumber = "1234567890"; // Replace with the desired phone number
                         Uri phoneUri = Uri.parse("tel:" + phoneNumber);
                         intent.setData(phoneUri);
-                        if (intent.resolveActivity(getPackageManager()) != null) {
+
                             startActivity(intent);
-                        }
+
                         return true;
                     case R.id.about:
                         return true;
