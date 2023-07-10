@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="136dp"
         android:layout_marginTop="272dp"
-        android:text="Vehicle not dectected"
+        android:text="Vehicle not detected"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
