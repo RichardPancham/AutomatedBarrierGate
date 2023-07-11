@@ -46,6 +46,12 @@ public class LoginActivity extends AppCompatActivity{
 
     private void verifyCredentials(final String email, final String password) {
 
+        //Verification for test account (developers)
+        if(email.equals("test")){
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
+
         //Verification through Firebase
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
             Toast.makeText(LoginActivity.this, "Please enter email and password", Toast.LENGTH_SHORT).show();
