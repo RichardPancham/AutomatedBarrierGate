@@ -1,66 +1,81 @@
 //Jaspreet Heer n01315290, Richard Pancham n01373454, Section 0NA
 
 package ca.smartgate.it.automatedbarriergate;
-
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PaymentFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class PaymentFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private EditText cardNumberEditText;
+    private EditText expiryDateEditText;
+    private EditText cvvEditText;
+    private Button validateButton;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public PaymentFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static PaymentFragment newInstance(String param1, String param2) {
-        PaymentFragment fragment = new PaymentFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_payment, container, false);
+
+        cardNumberEditText = view.findViewById(R.id.editTextNumber);
+        expiryDateEditText = view.findViewById(R.id.editTextTextPassword2);
+        cvvEditText = view.findViewById(R.id.editTextNumberPassword);
+        validateButton = view.findViewById(R.id.button3);
+
+        validateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String cardNumber = cardNumberEditText.getText().toString().trim();
+                String expiryDate = expiryDateEditText.getText().toString().trim();
+                String cvv = cvvEditText.getText().toString().trim();
+
+                // Perform credit card validation
+                if (isValidCard(cardNumber) && isValidExpiryDate(expiryDate) && isValidCVV(cvv)) {
+                    Toast.makeText(getActivity(), "Credit card is valid!", Toast.LENGTH_SHORT).show();
+                    BottomNavigationView bottomNavigationView = requireActivity().findViewById(R.id.bottomNavigationView);
+                    bottomNavigationView.setSelectedItemId(R.id.open_barrier);
+
+                } else {
+                    Toast.makeText(getActivity(), "Invalid credit card details!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        return view;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_payment, container, false);
+    private boolean isValidCard(String cardNumber) {
+        // Add your credit card validation logic here
+        // Return true if the card number is valid, otherwise false
+        // Example validation logic:
+        return cardNumber.length() == 16;
+    }
+
+    private boolean isValidExpiryDate(String expiryDate) {
+        // Add your expiry date validation logic here
+        // Return true if the expiry date is valid, otherwise false
+        // Example validation logic:
+        return expiryDate.matches("\\d{2}/\\d{2}"); // Matches the pattern MM/YY
+    }
+
+    private boolean isValidCVV(String cvv) {
+        // Add your CVV validation logic here
+        // Return true if the CVV is valid, otherwise false
+        // Example validation logic:
+        return cvv.length() == 3;
+
+
     }
 }

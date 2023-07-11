@@ -43,7 +43,7 @@
         android:layout_marginTop="316dp"
         android:ems="10"
         android:hint="MM/YY"
-        android:inputType="textPassword"
+        android:inputType="number|date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
