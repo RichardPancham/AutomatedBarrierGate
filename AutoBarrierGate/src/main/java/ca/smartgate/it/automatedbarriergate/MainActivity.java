@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity{
 
     private  Fragment settingsFragment;
     private  Fragment barrierFragment;
+    private  Fragment reviewsFragment;
 
     private static final int SPLASH_DELAY = 2000; // Time in milliseconds
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
@@ -62,8 +63,7 @@ public class MainActivity extends AppCompatActivity{
         locationFragment = new LocationFragment();
         barrierFragment = new BarrierOpenAndClose();
         settingsFragment = new SettingsFragment();
-
-
+        reviewsFragment = new ReviewsFragment();
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -81,6 +81,8 @@ public class MainActivity extends AppCompatActivity{
                     case R.id.open_barrier:
                         switchFragment(barrierFragment);
                         return true;
+
+
                 }
                 return false;
             }
@@ -153,6 +155,9 @@ public class MainActivity extends AppCompatActivity{
                         return true;
                     case R.id.about:
                         return true;
+                    case R.id.reviews:
+                         switchFragment(reviewsFragment);
+                         return  true;
                     default:
                         return super.onOptionsItemSelected(item);
 
