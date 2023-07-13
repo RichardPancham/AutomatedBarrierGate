@@ -143,6 +143,11 @@ public class MainActivity extends AppCompatActivity{
                         switchFragment(settingsFragment);
                         return true;
                     case R.id.web:
+                        String url = "https://parklio.com/en/blog/top-9-best-automatic-parking-barriers"; // Replace with your desired website URL
+
+                        Uri webpage = Uri.parse(url);
+                        Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
+                        startActivity(webIntent);
                         // Handle menu item 2 click
                         return true;
                     case R.id.dialer:
