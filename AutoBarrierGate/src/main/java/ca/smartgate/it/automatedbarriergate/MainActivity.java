@@ -29,6 +29,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity{
     private Fragment paymentFragment;
     private Fragment locationFragment;
+    private Fragment aboutFragment;
 
     private  Fragment settingsFragment;
     private  Fragment barrierFragment;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity{
         barrierFragment = new BarrierOpenAndClose();
         settingsFragment = new SettingsFragment();
         reviewsFragment = new ReviewsFragment();
+        aboutFragment = new AboutFragment();
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -154,6 +156,7 @@ public class MainActivity extends AppCompatActivity{
 
                         return true;
                     case R.id.about:
+                        switchFragment(aboutFragment);
                         return true;
                     case R.id.reviews:
                          switchFragment(reviewsFragment);
