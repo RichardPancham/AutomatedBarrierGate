@@ -24,31 +24,25 @@
             android:src="@drawable/gate"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.633"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.551" />
-
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="156dp"
-            android:layout_height="286dp"
-            android:src="@drawable/screenshot_2023_06_10_at_7_58_22_pm"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.473"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.161" />
+            app:layout_constraintVertical_bias="0.573" />
 
         <RadioGroup
             android:id="@+id/radioGroup"
-            android:layout_width="56dp"
-            android:layout_height="500dp"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="72dp"
+            android:layout_width="53dp"
+            android:layout_height="318dp"
+            android:layout_marginStart="124dp"
+            android:layout_marginTop="68dp"
+            android:layout_marginEnd="231dp"
+            android:layout_marginBottom="333dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.047">
 
             <RadioButton
                 android:id="@+id/radioButton"
@@ -91,7 +85,6 @@
                 tools:layout_editor_absoluteY="278dp" />
 
 
-
         </RadioGroup>
 
         <Button
@@ -105,6 +98,73 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.787" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="134dp"
+            android:layout_height="257dp"
+            android:layout_marginTop="69dp"
+            android:layout_marginEnd="276dp"
+            android:layout_marginBottom="413dp"
+            android:src="@drawable/screenshot_2023_07_15_at_11_37_02_am"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="116dp"
+            android:layout_height="293dp"
+            android:src="@drawable/screenshot_2023_07_15_at_11_39_56_am"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.633"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.158" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="362dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="662dp"
+            android:src="@drawable/screenshot_2023_07_15_at_11_42_08_am"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="122dp"
+            android:layout_height="496dp"
+            android:layout_marginStart="293dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="230dp"
+            android:src="@drawable/screenshot_2023_07_15_at_11_45_28_am"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="150dp"
+            android:layout_height="179dp"
+            android:layout_marginTop="326dp"
+            android:layout_marginEnd="261dp"
+            android:layout_marginBottom="226dp"
+            android:src="@drawable/screenshot_2023_07_15_at_11_54_28_am"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
