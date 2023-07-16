@@ -14,13 +14,16 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 public class SettingsFragment extends Fragment {
 
     private SharedPreferences sharedPreferences;
     private static final String VIBRATION_PREF = "vibration_pref";
+    private static final String NIGHT_MODE_PREF = "night_mode_pref";
     private Vibrator vibrator;
+    private boolean isNightModeEnabled;
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -41,9 +44,13 @@ public class SettingsFragment extends Fragment {
         Switch switchLockPortrait = rootView.findViewById(R.id.switch1);
         Button button = rootView.findViewById(R.id.signout);
         Switch switchVibration = rootView.findViewById(R.id.switch2);
+        Switch switchNightMode = rootView.findViewById(R.id.switch3);
 
         boolean isVibrationEnabled = sharedPreferences.getBoolean(VIBRATION_PREF, true);
         switchVibration.setChecked(isVibrationEnabled);
+
+        isNightModeEnabled = sharedPreferences.getBoolean(NIGHT_MODE_PREF, false);
+        switchNightMode.setChecked(isNightModeEnabled);
 
         switchLockPortrait.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -66,6 +73,15 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        switchNightMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                sharedPreferences.edit().putBoolean(NIGHT_MODE_PREF, isChecked).apply();
+                isNightModeEnabled = isChecked;
+                applyNightMode();
+            }
+        });
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,12 +89,22 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        applyNightMode();
+
         return rootView;
     }
 
     private void vibrate() {
         if (vibrator != null && vibrator.hasVibrator()) {
             vibrator.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
+        }
+    }
+
+    private void applyNightMode() {
+        if (isNightModeEnabled) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
     }
 }
