@@ -8,42 +8,53 @@
     tools:context=".SettingsFragment">
 
     <!-- Payment Methods RecyclerView -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/paymentMethodsRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/switch1" />
 
     <!-- User Profiles RecyclerView -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/userProfilesRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/paymentMethodsRecyclerView" />
 
     <!-- Sign Out Button -->
+
+    <!-- Lock Portrait Switch -->
+
     <Button
         android:id="@+id/signout"
         android:layout_width="129dp"
         android:layout_height="81dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="180dp"
         android:backgroundTint="@color/black"
         android:text="Sign Out"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/userProfilesRecyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/switch1" />
 
-    <!-- Lock Portrait Switch -->
     <Switch
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="23dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="17dp"
         android:text="Lock Portrait"
+        app:layout_constraintBottom_toTopOf="@+id/switch3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Disable vibration"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch3" />
+
+    <Switch
+        android:id="@+id/switch3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginBottom="24dp"
+        android:text="Night mode"
+        app:layout_constraintBottom_toTopOf="@+id/switch2"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
