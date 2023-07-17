@@ -17,4 +17,8 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="RadioButtonStyle" parent="@style/Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:layout_marginTop">18dp</item> <!-- Adjust the margin as per your preference -->
+    </style>
 </resources>
