@@ -27,7 +27,9 @@ public class LocationFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Get a reference to the Firestore database
         db = FirebaseFirestore.getInstance();
+
     }
     @Nullable
     @Override
