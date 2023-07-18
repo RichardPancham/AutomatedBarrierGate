@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,9 @@ public class LocationFragment extends Fragment {
     private FirebaseFirestore db;
     private RadioGroup radioGroup;
     private Button selectButton;
+
+    private TimePicker timePicker;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,7 +42,7 @@ public class LocationFragment extends Fragment {
 
         radioGroup = view.findViewById(R.id.radioGroup);
         selectButton = view.findViewById(R.id.button7);
-
+        timePicker = view.findViewById(R.id.timePicker);
         selectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,6 +58,14 @@ public class LocationFragment extends Fragment {
                     // No radio button is selected
                     Toast.makeText(getActivity(), "Please select an option", Toast.LENGTH_SHORT).show();
                 }
+
+                //Getting Time
+                int hour = timePicker.getCurrentHour();
+                int minute = timePicker.getCurrentMinute();
+
+                // Handle the selected time here
+                String selectedTime = hour + ":" + minute;
+                Toast.makeText(getActivity(), "Selected time: " + selectedTime, Toast.LENGTH_SHORT).show();
             }
         });
 
