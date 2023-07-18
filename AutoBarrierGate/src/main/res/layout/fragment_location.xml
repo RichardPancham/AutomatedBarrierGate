@@ -24,15 +24,15 @@
         android:id="@+id/button7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="538dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="667dp"
+        android:layout_marginEnd="161dp"
+        android:layout_marginBottom="16dp"
         android:text="Select"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -171,35 +171,64 @@
 
     <ImageView
         android:id="@+id/imageView11"
-        android:layout_width="124dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="413dp"
-        android:layout_marginEnd="300dp"
+        android:layout_width="268dp"
+        android:layout_height="142dp"
+        android:layout_marginTop="412dp"
+        android:layout_marginEnd="232dp"
         android:src="@drawable/screenshot_2023_07_15_at_11_54_28_am"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TimePicker
         android:id="@+id/timePicker"
-        android:layout_width="222dp"
-        android:layout_height="68dp"
+        android:layout_width="225dp"
+        android:layout_height="81dp"
         android:timePickerMode="spinner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.871" />
+        app:layout_constraintVertical_bias="0.9" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="196dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="511dp"
-        android:layout_marginEnd="103dp"
-        android:layout_marginBottom="168dp"
+        android:layout_width="291dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="536dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="139dp"
         android:text="Select time for parking booking and duration"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <NumberPicker
+        android:id="@+id/durationPicker"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="603dp"
+        android:layout_marginEnd="91dp"
+        android:layout_marginBottom="78dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="66dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="320dp"
+        android:layout_marginTop="610dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="85dp"
+        android:text="Hours"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
