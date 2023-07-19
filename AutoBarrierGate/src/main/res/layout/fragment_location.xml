@@ -10,6 +10,23 @@
     tools:layout_editor_absoluteX="-105dp"
     tools:layout_editor_absoluteY="0dp">
 
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="667dp"
+        android:layout_marginEnd="161dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#4E613E"
+        android:text="Select"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.721" />
+
     <ImageView
         android:id="@+id/imageView19"
         android:layout_width="383dp"
@@ -20,33 +37,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="667dp"
-        android:layout_marginEnd="161dp"
-        android:layout_marginBottom="16dp"
-        android:text="Select"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="426dp"
         android:layout_height="76dp"
+        android:layout_marginBottom="1dp"
         android:src="@drawable/screenshot_2023_07_15_at_11_42_08_am"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/imageView14"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/imageView10"
-        android:layout_width="145dp"
-        android:layout_height="490dp"
-        android:layout_marginStart="284dp"
+        android:layout_width="141dp"
+        android:layout_height="512dp"
+        android:layout_marginStart="288dp"
         android:src="@drawable/screenshot_2023_07_15_at_11_45_28_am"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -171,10 +175,11 @@
 
     <ImageView
         android:id="@+id/imageView11"
-        android:layout_width="268dp"
-        android:layout_height="142dp"
-        android:layout_marginTop="412dp"
-        android:layout_marginEnd="232dp"
+        android:layout_width="358dp"
+        android:layout_height="124dp"
+        android:layout_marginTop="401dp"
+        android:layout_marginEnd="170dp"
+        android:rotation="-90"
         android:src="@drawable/screenshot_2023_07_15_at_11_54_28_am"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -189,20 +194,16 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_constraintVertical_bias="0.901" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="291dp"
         android:layout_height="56dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="536dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="139dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="528dp"
         android:text="Select time for parking booking and duration"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -210,14 +211,13 @@
         android:id="@+id/durationPicker"
         android:layout_width="70dp"
         android:layout_height="50dp"
-        android:layout_marginStart="250dp"
         android:layout_marginTop="603dp"
-        android:layout_marginEnd="91dp"
+        android:layout_marginEnd="100dp"
         android:layout_marginBottom="78dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView2"
@@ -233,5 +233,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
