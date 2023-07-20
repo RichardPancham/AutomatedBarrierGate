@@ -22,10 +22,8 @@
         android:text="Select"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.721" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView19"
@@ -48,8 +46,8 @@
 
     <ImageView
         android:id="@+id/imageView10"
-        android:layout_width="141dp"
-        android:layout_height="512dp"
+        android:layout_width="138dp"
+        android:layout_height="486dp"
         android:layout_marginStart="288dp"
         android:src="@drawable/screenshot_2023_07_15_at_11_45_28_am"
         app:layout_constraintStart_toStartOf="parent"
@@ -175,10 +173,10 @@
 
     <ImageView
         android:id="@+id/imageView11"
-        android:layout_width="358dp"
-        android:layout_height="124dp"
-        android:layout_marginTop="401dp"
-        android:layout_marginEnd="170dp"
+        android:layout_width="368dp"
+        android:layout_height="106dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginEnd="176dp"
         android:rotation="-90"
         android:src="@drawable/screenshot_2023_07_15_at_11_54_28_am"
         app:layout_constraintEnd_toEndOf="parent"
@@ -186,48 +184,51 @@
 
     <TimePicker
         android:id="@+id/timePicker"
-        android:layout_width="225dp"
-        android:layout_height="81dp"
+        android:layout_width="216dp"
+        android:layout_height="88dp"
         android:timePickerMode="spinner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.082"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.901" />
+        app:layout_constraintVertical_bias="0.841" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="291dp"
         android:layout_height="56dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="528dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="492dp"
         android:text="Select time for parking booking and duration"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <NumberPicker
-        android:id="@+id/durationPicker"
-        android:layout_width="70dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="603dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="78dp"
+        android:id="@+id/numberPicker"
+        android:layout_width="48dp"
+        android:layout_height="102dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="307dp"
+        android:layout_marginTop="541dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="88dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="66dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="320dp"
-        android:layout_marginTop="610dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="85dp"
-        android:text="Hours"
+        android:layout_width="56dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="355dp"
+        android:layout_marginTop="575dp"
+        android:layout_marginBottom="102dp"
+        android:text="Hrs"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

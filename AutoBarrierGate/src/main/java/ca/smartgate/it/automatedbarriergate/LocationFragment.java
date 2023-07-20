@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TimePicker;
@@ -26,6 +27,9 @@ public class LocationFragment extends Fragment {
 
     private TimePicker timePicker;
 
+    private NumberPicker numberPicker;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,9 +44,22 @@ public class LocationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_location, container, false);
 
+        numberPicker = view.findViewById(R.id.numberPicker);
         radioGroup = view.findViewById(R.id.radioGroup);
         selectButton = view.findViewById(R.id.button7);
         timePicker = view.findViewById(R.id.timePicker);
+
+        //set min and max values for numberpicker
+        numberPicker.setMinValue(1);
+        numberPicker.setMaxValue(12);
+        numberPicker.setValue(1);
+
+        // Set a listener to update the selected number TextView
+        numberPicker.setOnValueChangedListener((picker, oldVal, newVal) -> {
+            int X=newVal;
+        });
+
+
         selectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
