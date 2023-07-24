@@ -72,6 +72,7 @@ public class BarrierOpenAndClose extends Fragment {
     }
     private FirebaseFirestore db;
     private TextView textView;
+    private TextView textView2;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -81,6 +82,7 @@ public class BarrierOpenAndClose extends Fragment {
         Button myButton = view.findViewById(R.id.button2);
         db = FirebaseFirestore.getInstance();
         textView = view.findViewById(R.id.textView3);
+        textView2 = view.findViewById(R.id.textView2);
 
         myButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +98,7 @@ public class BarrierOpenAndClose extends Fragment {
 
 
     private void fetchDataFromFirestore() {
+        //BreakBeamEntry
         db.collection("BreakBeamEntry")
                 .document("XHSxFPz9fVCtEaxMl6v5")
                 .get()
@@ -114,6 +117,27 @@ public class BarrierOpenAndClose extends Fragment {
                         // Handle any errors that occurred during the fetching process
                     }
                 });
+
+        //BreakBeamExit
+        db.collection("BreakBeamExit")
+                .document("78abDHeKCx2OFvLC9WEa")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            String data = documentSnapshot.getString("Status");
+                            textView2.setText(data);
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Handle any errors that occurred during the fetching process
+                    }
+                });
+
     }
 
 }

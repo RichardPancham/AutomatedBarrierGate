@@ -18,7 +18,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LocationFragment extends Fragment {
@@ -31,7 +37,7 @@ public class LocationFragment extends Fragment {
     private TimePicker timePicker;
 
     private NumberPicker numberPicker;
-    public int x;
+    public int p1, p2, p3, p4, p5;;
 
 
     @Override
@@ -47,6 +53,9 @@ public class LocationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_location, container, false);
 
+
+
+
         // Get references to RadioGroup, RadioButtons, and the select button
         radioGroup = view.findViewById(R.id.radioGroup);
         radio1 = view.findViewById(R.id.radioButton);
@@ -56,12 +65,38 @@ public class LocationFragment extends Fragment {
         radio5 = view.findViewById(R.id.radioButton5);
         selectButton = view.findViewById(R.id.button7);
 
-        //Pull values from database on which parking spots are free
-        int p1=1;
-        int p2=1;
-        int p3=1;
-        int p4=0;
-        int p5=0;
+        // Retrieve data from Firestore
+        DocumentReference docRef = db.collection("ParkingSpots").document("wn2O0AAGhcIUFk1Y328h");
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        // Retrieve the string values from Firestore
+                        p1 = Integer.parseInt(document.getString("p1"));
+                        p2 = Integer.parseInt(document.getString("p2"));
+                        p3 = Integer.parseInt(document.getString("p3"));
+                        p4 = Integer.parseInt(document.getString("p4"));
+                        p5 = Integer.parseInt(document.getString("p5"));
+
+                    } else {
+                        // Document does not exist
+                        Toast.makeText(requireContext(), "Document does not exist", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    // Error occurred while retrieving data
+                    Toast.makeText(requireContext(), "Error occurred while retrieving data", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        //Manually set parking spots that are free/taken
+        //int p1=1;
+        //int p2=1;
+        //int p3=1;
+        //int p4=0;
+        //int p5=0;
 
         // listener to the RadioGroup to handle the check behavior based off vacant parking spots
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -85,21 +120,30 @@ public class LocationFragment extends Fragment {
         selectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  int selectedRadioButtonId = radioGroup.getCheckedRadioButtonId();
+                if (radioGroup.getCheckedRadioButtonId() != -1) {
+                    // At least one RadioButton is checked, open another fragment
+                    openAnotherFragment();
+                } else {
+                    // No RadioButton is checked, display a toast
+                    displayToast();
+                }
 
-
-                //Getting Time
-           //     int hour = timePicker.getCurrentHour();
-             //   int minute = timePicker.getCurrentMinute();
-
-                // Handle the selected time here
-               // String selectedTime = hour + ":" + minute;
-                //Toast.makeText(getActivity(), "Selected time: " + selectedTime, Toast.LENGTH_SHORT).show();
-                //openPaymentFragment(1, 2, 3);
             }
         });
 
         return view;
+    }
+    private void openAnotherFragment() {
+        PaymentFragment paymentFragment = new PaymentFragment();
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentContainer, paymentFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    private void displayToast() {
+        Toast.makeText(requireContext(), "Please select a RadioButton", Toast.LENGTH_SHORT).show();
     }
 
 }
