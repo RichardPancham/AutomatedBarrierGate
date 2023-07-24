@@ -41,24 +41,7 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_main);
-
-        // Check if location permission is granted
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            // Location permission not granted, request it
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                    LOCATION_PERMISSION_REQUEST_CODE);
-        } else {
-            // Location permission already granted, start using location
-            startLocationUpdates();
-        }
-
-
-
 
         paymentFragment = new PaymentFragment();
         locationFragment = new LocationFragment();
@@ -101,27 +84,6 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Location permission granted, start using location
-                startLocationUpdates();
-            } else {
-                // Location permission denied, handle the situation
-                Toast.makeText(this, "Location permission denied", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    private void startLocationUpdates() {
-        // Location permission granted, start using location
-        // Implement your location-related code here
-    }
     // Inflate the menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

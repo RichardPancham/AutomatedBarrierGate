@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -28,7 +30,7 @@ public class LocationFragment extends Fragment {
     private TimePicker timePicker;
 
     private NumberPicker numberPicker;
-
+    public int x;
 
 
     @Override
@@ -56,7 +58,7 @@ public class LocationFragment extends Fragment {
 
         // Set a listener to update the selected number TextView
         numberPicker.setOnValueChangedListener((picker, oldVal, newVal) -> {
-            int X=newVal;
+            x=newVal;
         });
 
 
@@ -83,9 +85,11 @@ public class LocationFragment extends Fragment {
                 // Handle the selected time here
                 String selectedTime = hour + ":" + minute;
                 Toast.makeText(getActivity(), "Selected time: " + selectedTime, Toast.LENGTH_SHORT).show();
+                //openPaymentFragment(1, 2, 3);
             }
         });
 
         return view;
     }
+
 }
