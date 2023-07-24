@@ -47,23 +47,23 @@ public class LocationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_location, container, false);
 
-
-        selectButton = view.findViewById(R.id.button7);
-        // Get references to RadioGroup and RadioButtons
+        // Get references to RadioGroup, RadioButtons, and the select button
         radioGroup = view.findViewById(R.id.radioGroup);
         radio1 = view.findViewById(R.id.radioButton);
         radio2 = view.findViewById(R.id.radioButton2);
         radio3 = view.findViewById(R.id.radioButton3);
         radio4 = view.findViewById(R.id.radioButton4);
         radio5 = view.findViewById(R.id.radioButton5);
+        selectButton = view.findViewById(R.id.button7);
 
-
+        //Pull values from database on which parking spots are free
         int p1=1;
         int p2=1;
         int p3=1;
         int p4=0;
         int p5=0;
-        // Set listener to the RadioGroup to handle the check behavior
+
+        // listener to the RadioGroup to handle the check behavior based off vacant parking spots
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
