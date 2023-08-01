@@ -1,6 +1,7 @@
 //Jaspreet Heer n01315290, Richard Pancham n01373454, Section 0NA
 
 package ca.smartgate.it.automatedbarriergate;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +39,24 @@ public class LocationFragment extends Fragment {
 
     private NumberPicker numberPicker;
     public int p1, p2, p3, p4, p5;;
+
+    private OnParkingSpotSelectedListener listener;
+
+    private boolean isParkingSpotSelected = false;
+
+    public interface OnParkingSpotSelectedListener {
+        void onParkingSpotSelected(boolean isSelected);
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof OnParkingSpotSelectedListener) {
+            listener = (OnParkingSpotSelectedListener) context;
+        } else {
+            throw new ClassCastException(context.toString() + " must implement OnParkingSpotSelectedListener");
+        }
+    }
 
 
     @Override
@@ -122,10 +141,21 @@ public class LocationFragment extends Fragment {
             public void onClick(View v) {
                 if (radioGroup.getCheckedRadioButtonId() != -1) {
                     // At least one RadioButton is checked, open another fragment
-                    openAnotherFragment();
+                    isParkingSpotSelected = true;
+
+                    //openAnotherFragment();
+
+
                 } else {
                     // No RadioButton is checked, display a toast
+                    isParkingSpotSelected = false;
                     displayToast();
+                }
+                listener.onParkingSpotSelected(isParkingSpotSelected);
+
+                if(isParkingSpotSelected == true){
+                    BottomNavigationView bottomNavigationView = requireActivity().findViewById(R.id.bottomNavigationView);
+                    bottomNavigationView.setSelectedItemId(R.id.payment);
                 }
 
             }

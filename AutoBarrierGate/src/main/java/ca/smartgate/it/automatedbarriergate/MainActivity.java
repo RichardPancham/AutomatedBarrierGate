@@ -26,7 +26,7 @@ import android.Manifest;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements LocationFragment.OnParkingSpotSelectedListener{
     private Fragment paymentFragment;
     private Fragment locationFragment;
     private Fragment aboutFragment;
@@ -34,6 +34,9 @@ public class MainActivity extends AppCompatActivity{
     private  Fragment settingsFragment;
     private  Fragment barrierFragment;
     private  Fragment reviewsFragment;
+    private  Fragment selecParkingOption;
+
+    private boolean isOptionSelected = false;
 
     private static final int SPLASH_DELAY = 2000; // Time in milliseconds
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity{
         settingsFragment = new SettingsFragment();
         reviewsFragment = new ReviewsFragment();
         aboutFragment = new AboutFragment();
+        selecParkingOption = new SelectParkingFragment();
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -58,7 +62,13 @@ public class MainActivity extends AppCompatActivity{
                 switch (item.getItemId()) {
 
                     case R.id.payment:
-                        switchFragment(paymentFragment);
+                        if (isOptionSelected) {
+                            switchFragment(paymentFragment);
+                        } else {
+                            // If a parking spot is not selected, show a blank fragment or a message fragment
+                            // For now, we will display the locationFragment again as a placeholder
+                            switchFragment(selecParkingOption);
+                        }
                         return true;
                     case R.id.location:
                         switchFragment(locationFragment);
@@ -171,6 +181,10 @@ public class MainActivity extends AppCompatActivity{
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+    @Override
+    public void onParkingSpotSelected(boolean isSelected) {
+        isOptionSelected = isSelected;
     }
 
 
