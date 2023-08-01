@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity implements LocationFragment.
     private  Fragment settingsFragment;
     private  Fragment barrierFragment;
     private  Fragment reviewsFragment;
-    private  Fragment selecParkingOption;
+    private  Fragment selectParkingOption;
+    private  Fragment selectPayment;
 
     private boolean isOptionSelected = false;
 
@@ -53,7 +54,8 @@ public class MainActivity extends AppCompatActivity implements LocationFragment.
         settingsFragment = new SettingsFragment();
         reviewsFragment = new ReviewsFragment();
         aboutFragment = new AboutFragment();
-        selecParkingOption = new SelectParkingFragment();
+        selectParkingOption = new SelectParkingFragment();
+        selectPayment = new selectPayment();
 
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements LocationFragment.
                         } else {
                             // If a parking spot is not selected, show a blank fragment or a message fragment
                             // For now, we will display the locationFragment again as a placeholder
-                            switchFragment(selecParkingOption);
+                            switchFragment(selectParkingOption);
                         }
                         return true;
                     case R.id.location:
@@ -80,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements LocationFragment.
                             switchFragment(barrierFragment);
                         } else {
 
-                            switchFragment(selecParkingOption);
+                            switchFragment(selectPayment);
                         }
                         return true;
 
