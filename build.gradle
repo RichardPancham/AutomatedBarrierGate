@@ -10,9 +10,6 @@
      dependencies {
          // Add the dependency for the Google services Gradle plugin
          classpath 'com.google.gms:google-services:4.3.15'
-         testImplementation 'junit:junit:4.13.2'
-         androidTestImplementation 'androidx.test:runner:1.4.0'
-         androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
      }
  }

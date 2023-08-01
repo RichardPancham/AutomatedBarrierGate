@@ -37,11 +37,11 @@ public class MainActivity extends AppCompatActivity implements LocationFragment.
     private  Fragment selectParkingOption;
     private  Fragment selectPayment;
 
-    private boolean isOptionSelected = false;
+    public boolean isOptionSelected = false;
 
     private static final int SPLASH_DELAY = 2000; // Time in milliseconds
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-    private boolean OptionSelected = false;
+    public boolean OptionSelected = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
