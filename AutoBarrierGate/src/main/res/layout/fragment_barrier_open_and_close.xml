@@ -18,11 +18,13 @@
         android:layout_marginTop="276dp"
         android:layout_marginEnd="147dp"
         android:layout_marginBottom="416dp"
-        android:text="Entry: Vehicle not detected"
+        android:text="@string/entry_vehicle_not_detected"
+        android:textColor="#546E7A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextSizeCheck" />
 
     <TextView
         android:id="@+id/textView2"
@@ -32,17 +34,19 @@
         android:layout_marginTop="344dp"
         android:layout_marginEnd="147dp"
         android:layout_marginBottom="348dp"
-        android:text="Exit: Vehicle not detected"
+        android:text="@string/exit_vehicle_not_detected"
+        android:textColor="#546E7A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextSizeCheck" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="215dp"
         android:layout_height="78dp"
-        android:text="Open Gate"
+        android:text="@string/open_gate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,5 +67,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        android:contentDescription="@string/todo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

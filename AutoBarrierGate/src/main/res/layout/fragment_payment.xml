@@ -15,13 +15,15 @@
         android:layout_height="54dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="@string/name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.425"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.228" />
+        app:layout_constraintVertical_bias="0.228"
+        android:importantForAutofill="no"
+        tools:ignore="LabelFor" />
 
     <EditText
         android:id="@+id/editTextNumber"
@@ -33,7 +35,9 @@
         android:hint="Card number"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/editTextTextPassword2"
@@ -42,10 +46,11 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="316dp"
         android:ems="10"
-        android:hint="MM/YY"
+        android:hint="@string/mm_yy"
         android:inputType="number|date"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/editTextNumberPassword"
@@ -54,10 +59,11 @@
         android:layout_marginStart="200dp"
         android:layout_marginTop="316dp"
         android:ems="10"
-        android:hint="CVV"
+        android:hint="@string/cvv"
         android:inputType="numberPassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/button3"
@@ -65,7 +71,7 @@
         android:layout_height="71dp"
         android:layout_marginStart="104dp"
         android:layout_marginTop="420dp"
-        android:text="Validate"
+        android:text="@string/validate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,7 +84,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.016" />
+        app:layout_constraintVertical_bias="0.016"
+        android:contentDescription="TODO"
+        tools:ignore="ContentDescription,HardcodedText" />
 
     <TextView
         android:id="@+id/textView4"
@@ -88,7 +96,7 @@
         android:layout_marginTop="543dp"
         android:layout_marginEnd="192dp"
         android:layout_marginBottom="151dp"
-        android:text="Total= $20"
+        android:text="@string/total_20"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

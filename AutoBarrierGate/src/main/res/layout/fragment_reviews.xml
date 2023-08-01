@@ -14,13 +14,16 @@
         android:id="@+id/editTextReview"
         android:layout_width="394dp"
         android:layout_height="95dp"
-        android:hint="Write your review"
+        android:hint="@string/write_your_review"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.404" />
+        app:layout_constraintVertical_bias="0.404"
+        android:inputType="TODO"
+        android:importantForAutofill="no"
+        tools:ignore="TextFields" />
 
     <Button
         android:id="@+id/buttonSubmit"
@@ -31,7 +34,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.636" />
+        app:layout_constraintVertical_bias="0.636"
+        tools:ignore="HardcodedText" />
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -46,18 +50,21 @@
         app:layout_constraintHorizontal_bias="0.093"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.264" />
+        app:layout_constraintVertical_bias="0.264"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/editTextName"
         android:layout_width="167dp"
-        android:layout_height="43dp"
-        android:hint="Name"
+        android:layout_height="48dp"
+        android:hint="@string/namees"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.065"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.132" />
+        app:layout_constraintVertical_bias="0.132"
+        android:importantForAutofill="no"
+        tools:ignore="TextFields" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,7 +22,7 @@
         android:layout_marginStart="148dp"
         android:layout_marginTop="180dp"
         android:backgroundTint="@color/black"
-        android:text="Sign Out"
+        android:text="@string/sign_out"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switch1" />
 
@@ -33,19 +33,23 @@
         android:layout_marginStart="23dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="17dp"
-        android:text="Lock Portrait"
+        android:minHeight="48dp"
+        android:text="@string/lock_portrait"
         app:layout_constraintBottom_toTopOf="@+id/switch3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <Switch
         android:id="@+id/switch2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:minHeight="48dp"
         android:text="Disable vibration"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch3" />
+        app:layout_constraintTop_toBottomOf="@+id/switch3"
+        tools:ignore="HardcodedText,UseSwitchCompatOrMaterialXml" />
 
     <Switch
         android:id="@+id/switch3"
@@ -53,8 +57,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="31dp"
         android:layout_marginBottom="24dp"
-        android:text="Night mode"
+        android:minHeight="48dp"
+        android:text="@string/night_mode"
         app:layout_constraintBottom_toTopOf="@+id/switch2"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
