@@ -15,5 +15,6 @@ public class ExampleUnitTest {
         assertEquals(4, 2 + 2);
     }
 
-
+    public static class JUnit {
+    }
 }
