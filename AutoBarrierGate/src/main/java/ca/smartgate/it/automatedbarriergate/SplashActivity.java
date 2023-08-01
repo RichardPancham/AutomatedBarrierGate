@@ -1,8 +1,10 @@
 package ca.smartgate.it.automatedbarriergate;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -24,5 +26,11 @@ public class SplashActivity extends AppCompatActivity {
                 finish(); // Close the splash screen activity
             }
         }, SPLASH_DELAY);
+    }
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Load the appropriate layout based on the new configuration
+        setContentView(R.layout.activity_splash);
     }
 }

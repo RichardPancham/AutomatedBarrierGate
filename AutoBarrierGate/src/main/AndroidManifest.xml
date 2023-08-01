@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" >
     <!-- Always include this permission -->
@@ -17,25 +16,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AutomatedBarrierGate"
         tools:targetApi="33" >
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
+
+        <!-- Splash Activity -->
         <activity
             android:name=".SplashActivity"
+            android:configChanges="orientation|screenSize"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Login Activity -->
+        <activity
+            android:name=".LoginActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
+
+        <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
+            android:configChanges="orientation|screenSize"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

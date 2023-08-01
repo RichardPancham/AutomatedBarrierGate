@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -200,5 +201,12 @@ public class MainActivity extends AppCompatActivity implements LocationFragment.
     @Override
     public void onPaymentSelected(boolean isSelected) {
         OptionSelected = isSelected;
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Load the appropriate layout based on the new configuration
+        setContentView(R.layout.activity_main);
     }
 }
