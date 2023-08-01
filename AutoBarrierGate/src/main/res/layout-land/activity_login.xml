@@ -19,28 +19,36 @@
         app:layout_constraintStart_toStartOf="parent"
 
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.845" />
+        app:layout_constraintVertical_bias="0.891" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
         android:layout_width="296dp"
         android:layout_height="50dp"
-        android:layout_marginStart="204dp"
 
+        android:layout_marginStart="258dp"
+        android:layout_marginTop="171dp"
+        android:layout_marginEnd="231dp"
+        android:layout_marginBottom="75dp"
         android:background="@drawable/roundedge"
         android:backgroundTint="@color/purple_700"
         android:ems="10"
         android:hint="Enter Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress"
         android:layout_width="296dp"
         android:layout_height="50dp"
+        android:layout_marginStart="258dp"
+        android:layout_marginTop="89dp"
+        android:layout_marginEnd="231dp"
+        android:layout_marginBottom="254dp"
         android:background="@drawable/roundedge"
         android:backgroundTint="@color/purple_700"
         android:ems="10"
@@ -48,10 +56,8 @@
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.199" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
