@@ -26,7 +26,7 @@ import android.Manifest;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity implements LocationFragment.OnParkingSpotSelectedListener{
+public class MainActivity extends AppCompatActivity implements LocationFragment.OnParkingSpotSelectedListener,PaymentFragment.OnPaymentSelectedListener{
     private Fragment paymentFragment;
     private Fragment locationFragment;
     private Fragment aboutFragment;
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements LocationFragment.
 
     private static final int SPLASH_DELAY = 2000; // Time in milliseconds
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+    private boolean OptionSelected = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +75,13 @@ public class MainActivity extends AppCompatActivity implements LocationFragment.
                         switchFragment(locationFragment);
                         return true;
                     case R.id.open_barrier:
-                        switchFragment(barrierFragment);
+
+                        if (OptionSelected) {
+                            switchFragment(barrierFragment);
+                        } else {
+
+                            switchFragment(selecParkingOption);
+                        }
                         return true;
 
 
@@ -188,4 +195,8 @@ public class MainActivity extends AppCompatActivity implements LocationFragment.
     }
 
 
+    @Override
+    public void onPaymentSelected(boolean isSelected) {
+        OptionSelected = isSelected;
+    }
 }

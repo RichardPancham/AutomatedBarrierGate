@@ -2,6 +2,7 @@
 
 package ca.smartgate.it.automatedbarriergate;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,9 +28,25 @@ public class PaymentFragment extends Fragment {
     private EditText expiryDateEditText;
     private EditText cvvEditText;
     private Button validateButton;
+    private OnPaymentSelectedListener listener;
 
-    @SuppressLint("MissingInflatedId")
-    @Nullable
+    private boolean isPaymentSelected = false;
+
+    public interface OnPaymentSelectedListener {
+        void onPaymentSelected(boolean isSelected);
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof OnPaymentSelectedListener) {
+            listener = (OnPaymentSelectedListener) context;
+        } else {
+            throw new ClassCastException(context.toString() + " must implement OnParkingSpotSelectedListener");
+        }
+    }
+
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_payment, container, false);
@@ -50,13 +67,23 @@ public class PaymentFragment extends Fragment {
                 // Perform credit card validation
                 if (isValidCard(cardNumber) && isValidExpiryDate(expiryDate) && isValidCVV(cvv)) {
                     Toast.makeText(getActivity(), "Credit card is valid!", Toast.LENGTH_SHORT).show();
+
+                    isPaymentSelected = true;
                     BottomNavigationView bottomNavigationView = requireActivity().findViewById(R.id.bottomNavigationView);
                     bottomNavigationView.setSelectedItemId(R.id.open_barrier);
 
                 } else {
+                    isPaymentSelected = false;
                     Toast.makeText(getActivity(), "Invalid credit card details!", Toast.LENGTH_SHORT).show();
                 }
+                listener.onPaymentSelected(isPaymentSelected);
+
+                if(isPaymentSelected == true){
+                    BottomNavigationView bottomNavigationView = requireActivity().findViewById(R.id.bottomNavigationView);
+                    bottomNavigationView.setSelectedItemId(R.id.open_barrier);
+                }
             }
+
         });
 
         return view;
