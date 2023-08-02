@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/location"
-        android:title="Select Spotaaa"
+        android:title="Select Spots"
         android:icon="@drawable/location"/>
     <item
         android:id="@+id/payment"
