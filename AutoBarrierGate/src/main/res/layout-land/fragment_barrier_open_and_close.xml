@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C9F6FB"
+    tools:context=".BarrierOpenAndClose">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="168dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="403dp"
+        android:layout_marginTop="9dp"
+
+        android:layout_marginEnd="366dp"
+        android:layout_marginBottom="18dp"
+        android:text="@string/entry_vehicle_not_detected"
+        android:textColor="#546E7A"
+        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="168dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="403dp"
+        android:layout_marginTop="51dp"
+
+        android:layout_marginEnd="366dp"
+        android:layout_marginBottom="7dp"
+        android:text="@string/exit_vehicle_not_detected"
+        android:textColor="#546E7A"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        tools:ignore="TextSizeCheck" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="364dp"
+        android:layout_height="109dp"
+        android:layout_marginStart="122dp"
+        android:layout_marginTop="176dp"
+        android:layout_marginEnd="167dp"
+        android:layout_marginBottom="40dp"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/screenshot_2023_07_23_at_10_17_22_pm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="215dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="225dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="291dp"
+        android:layout_marginBottom="297dp"
+        android:text="@string/open_gate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.83"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.044" />
+</androidx.constraintlayout.widget.ConstraintLayout>

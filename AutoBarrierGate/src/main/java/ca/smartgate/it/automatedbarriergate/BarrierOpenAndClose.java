@@ -154,7 +154,7 @@ public class BarrierOpenAndClose extends Fragment {
             public void run() {
                 // Code to be executed after the 10-second delay
                 Toast.makeText(requireContext(), "5 seconds delay completed!", Toast.LENGTH_SHORT).show();
-                toggleImage();
+                imageView.setImageResource(R.drawable.screenshot_2023_07_23_at_10_17_22_pm);
             }
         }, DELAY_MILLIS);
         //Switch Picture back to Closed gate
@@ -166,7 +166,8 @@ public class BarrierOpenAndClose extends Fragment {
             imageView.setImageResource(R.drawable.screenshot_2023_07_23_at_10_17_28_pm);
         } else {
             imageView.setImageResource(R.drawable.screenshot_2023_07_23_at_10_17_22_pm);
+            isImage1Shown = !isImage1Shown;
         }
-        isImage1Shown = !isImage1Shown;
+
     }
 }
