@@ -19,6 +19,7 @@ public class LoginActivity extends AppCompatActivity{
     private EditText emailEditText, passwordEditText;
     private Button loginButton;
     private FirebaseFirestore db;
+    private  Button registerButton;
 
 
 
@@ -30,6 +31,7 @@ public class LoginActivity extends AppCompatActivity{
         emailEditText = findViewById(R.id.editTextTextEmailAddress);
         passwordEditText = findViewById(R.id.editTextTextPassword);
         loginButton = findViewById(R.id.button);
+        registerButton = findViewById(R.id.register);
 
         db = FirebaseFirestore.getInstance();
 
@@ -42,7 +44,17 @@ public class LoginActivity extends AppCompatActivity{
             }
         });
 
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
+
+
 
     private void verifyCredentials(final String email, final String password) {
 
