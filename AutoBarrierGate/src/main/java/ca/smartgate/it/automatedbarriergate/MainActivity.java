@@ -133,14 +133,15 @@ public class MainActivity extends AppCompatActivity implements LocationFragment.
                         // Handle menu item 2 click
                         return true;
                     case R.id.dialer:
-                        // Handle menu item 3 click
-                        Intent intent = new Intent(Intent.ACTION_DIAL);
-                        String phoneNumber = "1234567890"; // Replace with the desired phone number
-                        Uri phoneUri = Uri.parse("tel:" + phoneNumber);
-                        intent.setData(phoneUri);
 
-                            startActivity(intent);
-
+                        // Check if the CALL_PHONE permission is granted
+                        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+                            // Permission already granted, proceed with dialing
+                            dialPhoneNumber();
+                        } else {
+                            // Request permission
+                            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, LOCATION_PERMISSION_REQUEST_CODE);
+                        }
                         return true;
                     case R.id.about:
                         switchFragment(aboutFragment);
@@ -208,5 +209,27 @@ public class MainActivity extends AppCompatActivity implements LocationFragment.
         super.onConfigurationChanged(newConfig);
         // Load the appropriate layout based on the new configuration
         setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted, proceed with dialing
+                dialPhoneNumber();
+            } else {
+                // Permission denied, show a message or take appropriate action
+                Toast.makeText(this, "Permission denied. Cannot make a call.", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void dialPhoneNumber() {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        String phoneNumber = "1234567890"; // Replace with the desired phone number
+        Uri phoneUri = Uri.parse("tel:" + phoneNumber);
+        intent.setData(phoneUri);
+        startActivity(intent);
     }
 }
