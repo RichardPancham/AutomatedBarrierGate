@@ -15,7 +15,7 @@
         android:layout_height="54dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/name"
+        android:hint="@string/name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.425"
@@ -37,6 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:importantForAutofill="no"
+        android:maxLength="16"
         tools:ignore="HardcodedText" />
 
     <EditText
@@ -47,7 +48,9 @@
         android:layout_marginTop="316dp"
         android:ems="10"
         android:hint="@string/mm_yy"
-        android:inputType="number|date"
+        android:inputType="number"
+        android:maxLength="4"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:importantForAutofill="no" />
@@ -63,7 +66,11 @@
         android:inputType="numberPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="" />
+        android:autofillHints=""
+        android:maxLength="3"
+
+        />
+
 
     <Button
         android:id="@+id/button3"

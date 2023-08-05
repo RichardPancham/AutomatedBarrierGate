@@ -101,7 +101,7 @@ public class PaymentFragment extends Fragment {
         // Add your expiry date validation logic here
         // Return true if the expiry date is valid, otherwise false
         // Example validation logic:
-        return expiryDate.matches("\\d{2}/\\d{2}"); // Matches the pattern MM/YY
+        return expiryDate.matches("\\d{2}(\\/)?\\d{2}");
     }
 
     private boolean isValidCVV(String cvv) {
