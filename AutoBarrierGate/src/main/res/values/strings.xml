@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">AutomatedBarrierGate</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="exitPrompt">exit prompt</string>
+    <string name="title">title</string>
+    <string name="no">no</string>
+    <string name="ExitPrompt">Do you want to exit the app?</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+    <string name="login">Login</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="about_smartgate">About SmartGate</string>
+    <string name="a_parking_barrier_also_known_as_a_gate_or_a_boom_barrier_is_a_device_used_to_control_the_entry_and_exit_of_vehicles_in_parking_areas_it_is_typically_installed_at_the_entrance_or_exit_of_parking_lots_garages_or_restricted_areas_to_regulate_vehicle_access_the_smartgate_parking_barrier_by_smartgate_technologies_is_an_advanced_solution_that_offers_features_such_as_a_integrated_payment_system_access_to_the_gate_from_the_app_and_more">A parking barrier, also known as a gate or a boom barrier, is a device used to control the entry and exit of vehicles in parking areas. It is typically installed at the entrance or exit of parking lots, garages, or restricted areas to regulate vehicle access. The SmartGate parking barrier by SmartGate Technologies is an advanced solution that offers features such as a integrated payment system,access to the gate from the app and more.</string>
+    <string name="entry_vehicle_not_detected">Entry: Vehicle not detected</string>
+    <string name="exit_vehicle_not_detected">Exit: Vehicle not detected</string>
+    <string name="open_gate">Open Gate</string>
+    <string name="todo">TODO</string>
+    <string name="select">Select</string>
+    <string name="todo0">TODO</string>
+    <string name="todooo">TODO</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="select_a_parking_spot_for_you_parking_day_pass">Select a parking spot for you parking day pass</string>
+    <string name="name">Name</string>
+    <string name="mm_yy">MM/YY</string>
+    <string name="cvv">CVV</string>
+    <string name="validate">Validate</string>
+    <string name="total_20">Total= $20</string>
+    <string name="write_your_review">Write your review</string>
+    <string name="namees">Name</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="lock_portrait">Lock Portrait</string>
+    <string name="night_mode">Night mode</string>
+</resources>

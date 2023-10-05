@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Jaspreet Heer n01315290, Richard Pancham n01373454, Section 0NA-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D8D8D8"
+    tools:context=".LocationFragment"
+    tools:layout_editor_absoluteX="-105dp"
+    tools:layout_editor_absoluteY="0dp">
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="99dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="633dp"
+        android:layout_marginEnd="156dp"
+        android:layout_marginBottom="47dp"
+        android:backgroundTint="#4E613E"
+        android:text="@string/select"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="VisualLintOverlap" />
+
+    <ImageView
+        android:id="@+id/imageView19"
+        android:layout_width="383dp"
+        android:layout_height="441dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="212dp"
+        android:src="@drawable/barriergate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/todo0"
+        tools:ignore="VisualLintBounds" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="426dp"
+        android:layout_height="76dp"
+        android:layout_marginBottom="1dp"
+        android:contentDescription="@string/todooo"
+        android:src="@drawable/screenshot_2023_07_15_at_11_42_08_am"
+        app:layout_constraintBottom_toTopOf="@+id/imageView14"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ImageContrastCheck,VisualLintBounds" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="138dp"
+        android:layout_height="486dp"
+        android:layout_marginStart="288dp"
+        android:src="@drawable/screenshot_2023_07_15_at_11_45_28_am"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="TODO"
+        tools:ignore="ContentDescription,HardcodedText,VisualLintBounds" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="112dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="299dp"
+        android:src="@drawable/parkinglot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="112dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="299dp"
+        android:src="@drawable/parkinglot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="112dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="69dp"
+        android:layout_marginEnd="299dp"
+        android:src="@drawable/parkinglot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="112dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="203dp"
+        android:layout_marginEnd="299dp"
+        android:src="@drawable/parkinglot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="112dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="270dp"
+        android:layout_marginEnd="299dp"
+        android:src="@drawable/parkinglot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="112dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="337dp"
+        android:layout_marginEnd="299dp"
+        android:src="@drawable/parkinglot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="185dp"
+        android:layout_height="325dp"
+        android:layout_marginTop="69dp"
+        android:layout_marginEnd="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextSizeCheck">
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            style="@style/RadioButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/_1"
+            tools:layout_editor_absoluteX="72dp"
+            tools:layout_editor_absoluteY="86dp" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            style="@style/RadioButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/_2"
+            tools:layout_editor_absoluteX="72dp"
+            tools:layout_editor_absoluteY="134dp" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            style="@style/RadioButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/_3"
+            tools:layout_editor_absoluteX="72dp"
+            tools:layout_editor_absoluteY="182dp" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            style="@style/RadioButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/_4"
+            tools:layout_editor_absoluteX="72dp"
+            tools:layout_editor_absoluteY="230dp" />
+
+        <RadioButton
+            android:id="@+id/radioButton5"
+            style="@style/RadioButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="@string/_5"
+            tools:ignore="TouchTargetSizeCheck"
+            tools:layout_editor_absoluteX="72dp"
+            tools:layout_editor_absoluteY="278dp" />
+
+
+    </RadioGroup>
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="368dp"
+        android:layout_height="106dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginEnd="176dp"
+        android:rotation="-90"
+        android:src="@drawable/screenshot_2023_07_15_at_11_54_28_am"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription,VisualLintBounds" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="346dp"
+        android:layout_height="69dp"
+        android:text="@string/select_a_parking_spot_for_you_parking_day_pass"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.826"
+        tools:ignore="TextSizeCheck" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

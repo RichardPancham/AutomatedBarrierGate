@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "202817227561",
+    "project_id": "automatedbarriergate",
+    "storage_bucket": "automatedbarriergate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:202817227561:android:2c8cc54ad5f33f02d20538",
+        "android_client_info": {
+          "package_name": "ca.smartgate.it.automatedbarriergate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "202817227561-hcqesahpbu2h7g3lj3576kos6n7o928r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXKLgGTKt5ZzjSo40AAtkrOiCnY2P48-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "202817227561-hcqesahpbu2h7g3lj3576kos6n7o928r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
