@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -115,13 +116,13 @@ public class BarrierOpenAndClose extends Fragment {
             public void onClick(View v) {
                 // Toggle the image and start a 5-second delay
                 if(openBreakBeam.equals("BreakBeam 1 Broken")||closeBreakBeam.equals("BreakBeam 2 Broken") ) {
-                    //sendDataToFirebase();
+                    sendDataToFirebase();
                     toggleImage();
                     Toast.makeText(requireContext(), "gate open", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     Toast.makeText(requireContext(), "Please readjust your vehicle ", Toast.LENGTH_SHORT).show();
-                }
+               }
             }
         });
 
@@ -138,25 +139,26 @@ public class BarrierOpenAndClose extends Fragment {
             }
         }
     };
-    private void sendDataToFirebase(){
-        String data = "status:open";
-        db.collection("BarrierGate")
-                .document("MtjpzgC4fsB9Kym0CoGQ ")
+    private void sendDataToFirebase() {
+        Map<String, Object> data = new HashMap<>();
+        data.put("Status", "open"); // Replace "status" with the appropriate field name in your Firestore document
+
+        DocumentReference docRef = db.collection("BarrierGate").document("MtjpzgC4fsB9Kym0CoGQ");
+
+        docRef
                 .set(data)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        // Data was successfully added
+                        Log.d("Firebase", "Data sent to Firebase successfully.");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        // Handle errors
+                        Log.e("Firebase", "Error sending data to Firebase: " + e.getMessage());
                     }
                 });
-
-
     }
 
     private void fetchDataFromFirestore() {
