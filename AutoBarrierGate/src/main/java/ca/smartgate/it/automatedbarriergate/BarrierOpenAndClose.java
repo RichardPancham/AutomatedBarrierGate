@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,7 +35,7 @@ import java.util.Map;
  */
 public class BarrierOpenAndClose extends Fragment {
     private static final int DELAY_MILLIS = 5000; // 5 seconds
-    FirebaseFirestore firestore;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -43,6 +44,9 @@ public class BarrierOpenAndClose extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    String openBreakBeam = null;
+    String closeBreakBeam = null;
 
     public BarrierOpenAndClose() {
         // Required empty public constructor
@@ -74,17 +78,22 @@ public class BarrierOpenAndClose extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+
+
+
+
     private FirebaseFirestore db;
     private TextView textView;
     private TextView textView2;
-
     private ImageView imageView;
     private boolean isImage1Shown = true;
 
+    private Handler handler;
+    private HandlerThread handlerThread;
+    private boolean isFetching = true; // To control the continuous data fetch
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_barrier_open_and_close, container, false);
         imageView = view.findViewById(R.id.imageView4);
 
@@ -93,19 +102,62 @@ public class BarrierOpenAndClose extends Fragment {
         textView = view.findViewById(R.id.textView3);
         textView2 = view.findViewById(R.id.textView2);
 
+        // Create a background thread and handler for continuous fetch
+        handlerThread = new HandlerThread("DataFetchThread");
+        handlerThread.start();
+        handler = new Handler(handlerThread.getLooper());
+
+        // Start the continuous fetch
+        handler.post(fetchDataRunnable);
+
         myButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                fetchDataFromFirestore();
-                toggleImage();
+            public void onClick(View v) {
+                // Toggle the image and start a 5-second delay
+                if(openBreakBeam.equals("BreakBeam 1 Broken")||closeBreakBeam.equals("BreakBeam 2 Broken") ) {
+                    //sendDataToFirebase();
+                    toggleImage();
+                    Toast.makeText(requireContext(), "gate open", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(requireContext(), "Please readjust your vehicle ", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         return view;
     }
 
+    private Runnable fetchDataRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (isFetching) {
+                fetchDataFromFirestore();
+                // Continue the data fetch loop
+                handler.postDelayed(this, 1);
+            }
+        }
+    };
+    private void sendDataToFirebase(){
+        String data = "status:open";
+        db.collection("BarrierGate")
+                .document("MtjpzgC4fsB9Kym0CoGQ ")
+                .set(data)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Data was successfully added
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Handle errors
+                    }
+                });
 
+
+    }
 
     private void fetchDataFromFirestore() {
         //BreakBeamEntry
@@ -116,8 +168,10 @@ public class BarrierOpenAndClose extends Fragment {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
-                            String data = documentSnapshot.getString("Status");
+                            String data = documentSnapshot.getString("sensor_status");
+                            openBreakBeam = data;
                             textView.setText(data);
+
                         }
                     }
                 })
@@ -136,8 +190,10 @@ public class BarrierOpenAndClose extends Fragment {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
-                            String data = documentSnapshot.getString("Status");
+                            String data = documentSnapshot.getString("sensor_status");
+                            closeBreakBeam=data;
                             textView2.setText(data);
+
                         }
                     }
                 })
@@ -147,7 +203,11 @@ public class BarrierOpenAndClose extends Fragment {
                         // Handle any errors that occurred during the fetching process
                     }
                 });
-        toggleImage();
+
+
+    }
+
+    private void toggleImage() {
         // Simulate a 10-second delay and show a toast after the delay
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
@@ -159,9 +219,6 @@ public class BarrierOpenAndClose extends Fragment {
         }, DELAY_MILLIS);
         //Switch Picture back to Closed gate
         //toggleImage();
-
-    }
-    private void toggleImage() {
         if (isImage1Shown) {
             imageView.setImageResource(R.drawable.screenshot_2023_07_23_at_10_17_28_pm);
         } else {
@@ -170,4 +227,6 @@ public class BarrierOpenAndClose extends Fragment {
         }
 
     }
+
+
 }
