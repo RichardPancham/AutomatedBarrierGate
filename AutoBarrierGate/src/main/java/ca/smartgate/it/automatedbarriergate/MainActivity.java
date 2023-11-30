@@ -5,6 +5,7 @@ package ca.smartgate.it.automatedbarriergate;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -17,6 +18,9 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -25,7 +29,11 @@ import android.widget.Toast;
 import android.Manifest;
 
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity implements LocationFragment.OnParkingSpotSelectedListener,PaymentFragment.OnPaymentSelectedListener{
     private Fragment paymentFragment;
@@ -43,9 +51,15 @@ public class MainActivity extends AppCompatActivity implements LocationFragment.
     private static final int SPLASH_DELAY = 2000; // Time in milliseconds
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     public boolean OptionSelected = false;
+    private Handler handler;
+    private int lightSensor;
+    private HandlerThread handlerThread;
+    private boolean isFetching = true;
+    private FirebaseFirestore db_fire;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        db_fire = FirebaseFirestore.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -57,7 +71,16 @@ public class MainActivity extends AppCompatActivity implements LocationFragment.
         aboutFragment = new AboutFragment();
         selectParkingOption = new SelectParkingFragment();
         selectPayment = new selectPayment();
+        db_fire = FirebaseFirestore.getInstance();
 
+        // Create a background thread and handler for continuous fetch
+        handlerThread = new HandlerThread("DataFetchThreadds");
+        handlerThread.start();
+        handler = new Handler(handlerThread.getLooper());
+
+        handler.post(fetchDataRunnable);
+        settingsFragment = new SettingsFragment();
+        db_fire = FirebaseFirestore.getInstance();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -231,5 +254,52 @@ public class MainActivity extends AppCompatActivity implements LocationFragment.
         Uri phoneUri = Uri.parse("tel:" + phoneNumber);
         intent.setData(phoneUri);
         startActivity(intent);
+    }
+
+    private Runnable fetchDataRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (isFetching) {
+
+                fetchDataFromFirestore();
+
+
+                // Continue the data fetch loop
+                handler.postDelayed(this, 10);
+            }
+        }
+    };
+
+    private void fetchDataFromFirestore() {
+        db_fire.collection("Luminosity")
+                .document("OY9c6shkNeC1fwGv3Kd7")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        Log.e("Successful", "This is successful");
+                        if (documentSnapshot.exists()) {
+                            boolean data;
+                            data = documentSnapshot.getBoolean("value");
+                            updateNightModeBasedOnSensor(data);
+                            Log.e("lightSensorsssssss", "onSuccess:  " + data);
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Handle any errors that occurred during the fetching process
+                        Log.e("Failures", "Error fetching data: " + e.getMessage(), e);
+                    }
+                });
+    }
+
+    private void updateNightModeBasedOnSensor(boolean isDarkModeEnabled) {
+        if (isDarkModeEnabled) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
     }
 }
