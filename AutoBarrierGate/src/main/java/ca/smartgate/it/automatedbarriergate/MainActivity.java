@@ -279,8 +279,8 @@ public class MainActivity extends AppCompatActivity implements LocationFragment.
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         Log.e("Successful", "This is successful");
                         if (documentSnapshot.exists()) {
-                            boolean data;
-                            data = documentSnapshot.getBoolean("value");
+                           // boolean data;
+                           int data = documentSnapshot.getLong("value").intValue();
                             updateNightModeBasedOnSensor(data);
                             Log.e("lightSensorsssssss", "onSuccess:  " + data);
                         }
@@ -295,8 +295,8 @@ public class MainActivity extends AppCompatActivity implements LocationFragment.
                 });
     }
 
-    private void updateNightModeBasedOnSensor(boolean isDarkModeEnabled) {
-        if (isDarkModeEnabled) {
+    private void updateNightModeBasedOnSensor(int isDarkModeEnabled) {
+        if (isDarkModeEnabled == 0) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
